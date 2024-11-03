@@ -12,4 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cb30c2b27a420649a1ab11fcbed4efb, type: 3}
   m_Name: Beaver
   m_EditorClassIdentifier: 
-  _skin: {fileID: 8107479892199562815, guid: 9ea4de818b7d5634ea06c4e361e7cd3a, type: 3}
+  <Prefab>k__BackingField: {fileID: 8107479892199562815, guid: 9ea4de818b7d5634ea06c4e361e7cd3a, type: 3}
+  <AnimationAnimals>k__BackingField:
+  - <NameAnimanion>k__BackingField: 0
+    <AnimationClip>k__BackingField: {fileID: 7400016, guid: 877d9429060ffb64ba67e3186775ac0c, type: 3}
+  - <NameAnimanion>k__BackingField: 1
+    <AnimationClip>k__BackingField: {fileID: 7400006, guid: 877d9429060ffb64ba67e3186775ac0c, type: 3}
+  - <NameAnimanion>k__BackingField: 2
+    <AnimationClip>k__BackingField: {fileID: 7400012, guid: 877d9429060ffb64ba67e3186775ac0c, type: 3}
+  - <NameAnimanion>k__BackingField: 3
+    <AnimationClip>k__BackingField: {fileID: 7400022, guid: 877d9429060ffb64ba67e3186775ac0c, type: 3}
+  - <NameAnimanion>k__BackingField: 4
+    <AnimationClip>k__BackingField: {fileID: 7400026, guid: 877d9429060ffb64ba67e3186775ac0c, type: 3}
+  <NameAnimal>k__BackingField: 3

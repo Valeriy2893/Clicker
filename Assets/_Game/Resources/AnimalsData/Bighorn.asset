@@ -12,5 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cb30c2b27a420649a1ab11fcbed4efb, type: 3}
   m_Name: Bighorn
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: 0
-  _skin: {fileID: 1656301657227394313, guid: 0eeff6460d848604ca7b5ea2f3c09d52, type: 3}
+  <Prefab>k__BackingField: {fileID: 1656301657227394313, guid: 0eeff6460d848604ca7b5ea2f3c09d52, type: 3}
+  <AnimationAnimals>k__BackingField:
+  - <NameAnimanion>k__BackingField: 0
+    <AnimationClip>k__BackingField: {fileID: 7400016, guid: 5e615ede1f646b842ba7d99957d10be7, type: 3}
+  - <NameAnimanion>k__BackingField: 1
+    <AnimationClip>k__BackingField: {fileID: 7400006, guid: 5e615ede1f646b842ba7d99957d10be7, type: 3}
+  - <NameAnimanion>k__BackingField: 2
+    <AnimationClip>k__BackingField: {fileID: 7400012, guid: 5e615ede1f646b842ba7d99957d10be7, type: 3}
+  - <NameAnimanion>k__BackingField: 3
+    <AnimationClip>k__BackingField: {fileID: 7400022, guid: 5e615ede1f646b842ba7d99957d10be7, type: 3}
+  - <NameAnimanion>k__BackingField: 4
+    <AnimationClip>k__BackingField: {fileID: 7400026, guid: 5e615ede1f646b842ba7d99957d10be7, type: 3}
+  <NameAnimal>k__BackingField: 4

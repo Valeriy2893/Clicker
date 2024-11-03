@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4463111a29649c6a9dffffe53e66f1e, type: 3}
+  m_Name: ConfigGame
+  m_EditorClassIdentifier: 
+  <ExperienceRequiredForNextLevel>k__BackingField: 01000000020000000b0000000c0000000d0000000e0000000f000000100000001100000012000000
+  <IconVolumes>k__BackingField:
+  - <Type>k__BackingField: 0
+    <Icon>k__BackingField: {fileID: 21300000, guid: 50b6fdf3568874d90a121c15e0bbab83, type: 3}
+  - <Type>k__BackingField: 1
+    <Icon>k__BackingField: {fileID: 21300000, guid: 2b6f3f1b29bd84366bdf5775a5aebcbb, type: 3}
+  <AudioVolumes>k__BackingField:
+  - <Type>k__BackingField: 0
+    <Sound>k__BackingField: {fileID: 8300000, guid: 659e7ddec76ac534d8d5394b6474138c, type: 3}
+  - <Type>k__BackingField: 1
+    <Sound>k__BackingField: {fileID: 8300000, guid: 499f4f7036b5dfc4b8a1c136812afd99, type: 3}
+  - <Type>k__BackingField: 2
+    <Sound>k__BackingField: {fileID: 8300000, guid: d0dfbf473aa226d4ba1f21391b6e570c, type: 3}
+  <FxPrefabs>k__BackingField:
+  - <Type>k__BackingField: 0
+    <PrefabParticle>k__BackingField: {fileID: 7855270091250332510, guid: 966d1f6fab66de6469019802f7b791c2, type: 3}
+  - <Type>k__BackingField: 1
+    <PrefabParticle>k__BackingField: {fileID: 4593184484909914552, guid: 2e1e9506f5904a64b81744324fb7cd50, type: 3}
+  <FlyTextPrefab>k__BackingField: {fileID: 9086881595534327566, guid: d64f27b686f4fbf4eb5ea6bfbe7fef3b, type: 3}

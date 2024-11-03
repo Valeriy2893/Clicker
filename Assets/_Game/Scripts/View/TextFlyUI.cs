@@ -1,47 +1,27 @@
+using System;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 
-public class TextFlyUI : MonoBehaviour
+public class TextFlyUI : MonoBehaviour, ITextFlyView
 {
     [field: SerializeField] public TMP_Text TextFly { get; private set; }
-    [SerializeField] private Player clickHandler;
+    public GameObject GameObject=> gameObject;
+    public event Action<ITextFlyView> AnimationEnded;
+    public void SetColor(Color color) => TextFly.color = color;
+    public void SetText(string text) => TextFly.text = text;
+    public void SetFontSize(int size) => TextFly.fontSize = size;
+    public void StartAnimation()
+    {
+        var offset = 150;
+        var time = 1;
 
-    public void SelectColor(bool isFactorClick)
-    {
-        if (isFactorClick)
-        {
-            TextFly.color = Color.red;
-        }
-        else
-        {
-            TextFly.color = Color.black;
-        }
-    }
-    public void SelectFontSize(bool isFactorClick)
-    {
-        if (isFactorClick)
-        {
-            var maxSize = 100;
-            TextFly.fontSize = maxSize;
-        }
-        else
-        {
-            var minSize = 45;
-            TextFly.fontSize = minSize;
-        }
-    }
-    public void ShowTextFly(bool isFactorClick)
-    {
-        clickHandler = FindObjectOfType<Player>();
-
-        // if (isFactorClick)
-        // {
-        //     TextFly.text = "+" + FormatLargeNumber.ModificationInt(clickHandler.Data.GetValue(TypeButton.Click) * clickHandler.Data.GetValue(TypeButton.FactorClick));
-        // }
-        // else
-        // {
-        //
-        //     TextFly.text = "+" + FormatLargeNumber.ModificationInt(clickHandler.Data.GetValue(TypeButton.Click));
-        // }
+        var originalPosition = transform.localPosition;
+        transform.DOLocalMoveY(transform.localPosition.y + offset, time)
+            .OnComplete(() =>
+            {
+                transform.localPosition = originalPosition;
+                AnimationEnded?.Invoke(this);
+            });
     }
 }

@@ -457,7 +457,7 @@ GameObject:
   - component: {fileID: 2146774954413254565}
   - component: {fileID: 2146774954413254564}
   - component: {fileID: 2146774954413254571}
-  - component: {fileID: 5603274393044990813}
+  - component: {fileID: 7029058951893193654}
   m_Layer: 0
   m_Name: Armadillo
   m_TagString: Untagged
@@ -504,8 +504,8 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2146774954413254568}
-  m_Enabled: 0
-  m_Avatar: {fileID: 9000000, guid: bf4017df3a5f2474783f62d6a970776e, type: 3}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: ba8d73f9d621ad54baf537bc86f54afb, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
@@ -516,7 +516,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &5603274393044990813
+--- !u!114 &7029058951893193654
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -529,4 +529,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 2146774954413254571}
-  _animationClip: {fileID: 7400016, guid: bf4017df3a5f2474783f62d6a970776e, type: 3}
