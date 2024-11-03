@@ -5,6 +5,7 @@ public class ButtonsManager
 {
     public List<ButtonMain> MainButtons { get;}
     public AutoClickService AutoClickService{ get;}
+    
     public ButtonsManager(SpawnerButtons spawnerButtons, AutoClickService autoClickService)
     {
         MainButtons=spawnerButtons.CreateButtons();

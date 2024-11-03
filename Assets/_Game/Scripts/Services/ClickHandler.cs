@@ -6,9 +6,9 @@ public class ClickHandler: IClickHandler,IDisposable
 {
     private readonly Camera _cameraMain;
     private readonly CompositeDisposable _disposables = new();
-    
     public event Action<Vector3> ClickedAnimalWithPosition;
     public event Action ClickedAnimal;
+    
     public ClickHandler(Camera cameraMain)
     {
         _cameraMain = cameraMain;

@@ -11,8 +11,8 @@ public class ButtonMain: IDisposable
     private readonly Shopping _shopping;
     
     private readonly CompositeDisposable _disposable = new();
-
     public event Func<int,bool> ClickedButtonMain;
+    
     public ButtonMain(IButtonInfo buttonInfo, IButtonView buttonUI,ICurrencyProvider currencyProvider)
     {
         _buttonInfo = buttonInfo;

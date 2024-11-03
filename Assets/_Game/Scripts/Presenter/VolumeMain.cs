@@ -7,6 +7,7 @@ public class VolumeMain: IDisposable
     private readonly IVolumeView _volumeUI;
     private readonly CompositeDisposable _disposable = new();
     private readonly IClickHandler _clickHandler;
+    
     public VolumeMain(IVolume volume,IVolumeView volumeUI,ILevelProgression levelProgression,IClickHandler clickHandler,ResourcesManager resourcesManager)
     {
         _volume=volume;

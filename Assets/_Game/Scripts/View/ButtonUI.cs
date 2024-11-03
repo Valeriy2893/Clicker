@@ -10,7 +10,6 @@ public class ButtonUI: MonoBehaviour,IButtonView
     [SerializeField] private TMP_Text _price;
     [SerializeField] private TMP_Text _count;
     [SerializeField] private Button _clickButton;
-    
     public event Action OnClickButton;
     public void Init(Sprite icon, string nameButton)
     {

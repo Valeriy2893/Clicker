@@ -7,7 +7,6 @@ public class ClickCalculator: IClickCalculator
     private const int maxExclusive = 101;
     
     private readonly ButtonsManager _buttonsManager;
-    
     public event Action<int, bool> ClickCalculatedWithFactor;
     public event Action<int> ClickCalculated;
 

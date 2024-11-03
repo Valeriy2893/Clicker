@@ -15,6 +15,7 @@ public class VolumeUI : MonoBehaviour,IVolumeView
     private Sprite _spriteOff;
     private Sprite _spriteOn;
     public event Action OnClickButtonVolume;
+    
     public void Init(Sprite spriteOff, Sprite spriteOn, AudioClip audioClipClick, AudioClip audioClipSwitch, AudioClip audioClipBackgroundMusic)
     {
         SetSprites(spriteOff, spriteOn);

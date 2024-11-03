@@ -4,7 +4,6 @@ using R3;
 public class AutoClickService : IDisposable
 {
     private readonly CompositeDisposable _disposable = new();
-    
     public event Action<int, int> OnAddCoinsAuto;
 
     public void Initialize(ButtonMain clickSecButton, ButtonMain factorClickSecButton)

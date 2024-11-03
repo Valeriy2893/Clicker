@@ -13,6 +13,7 @@ public class ButtonInfo: IButtonInfo
     private readonly int _defaultValue;
     private readonly int _defaultPrice;
     private readonly float _factorPrice;
+    
     public ButtonInfo(TypeButton typeButton,int value, int price,float factorPrice)
     {
         TypeButton = typeButton;

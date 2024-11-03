@@ -5,6 +5,7 @@ public class LevelManager: IDisposable
     private readonly ILevelProgression _levelProgression;
     private readonly IClickCalculator _clickCalculator;
     private readonly CompositeDisposable _disposable = new();
+    
     public LevelManager(ILevelProgression levelProgression,ILevelView levelView,IClickCalculator clickCalculator)
     {
         _levelProgression=levelProgression;

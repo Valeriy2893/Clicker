@@ -15,6 +15,7 @@ public class LevelProgression: ILevelProgression
     private readonly ReactiveProperty<int> _experienceRequiredForNextLevel=new();
 
     private readonly IReadOnlyList<int> _experienceRequirements;
+    
     public LevelProgression(IReadOnlyList<int> experienceRequirements,int level, int experience)
     { 
         _experienceRequirements = experienceRequirements;

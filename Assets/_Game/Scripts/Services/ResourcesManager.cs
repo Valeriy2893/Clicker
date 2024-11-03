@@ -15,6 +15,7 @@ public class ResourcesManager
     private readonly Dictionary<AudioType,AudioClip> _audioVolume;
     private readonly Dictionary<FxType,GameObject> _fxGameObjects;
     private readonly GameObject _flyTextGameObject;
+    
     public ResourcesManager()
     {
         _animals = Resources

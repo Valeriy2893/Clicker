@@ -7,6 +7,7 @@ public class Shopping: IDisposable
     private readonly CompositeDisposable _disposable = new();
     private readonly IClickCalculator _clickCalculator; 
     private readonly ButtonsManager _buttonsManager;
+    
     public Shopping(ICurrencyProvider currencyProvider,ICoinsView coinsView,IClickCalculator clickCalculator,ButtonsManager buttonsManager)
     {
         _currencyProvider= currencyProvider;

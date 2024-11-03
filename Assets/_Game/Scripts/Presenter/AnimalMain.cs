@@ -11,6 +11,7 @@ public class AnimalMain: IDisposable
     private readonly IAnimalView _animalView;
     private readonly List<AnimationAnimal> _animationAnimal;
     private readonly IClickHandler _clickHandler;
+    
     public AnimalMain(IAnimalView animalView,int index,List<AnimationAnimal> animationAnimal,IClickHandler clickHandler)
     {
         _animalView = animalView;

@@ -7,6 +7,7 @@ public class PoolFlyText
     private readonly Transform _parentPrefabFlyText;
     private readonly ObjectPool<ITextFlyView> _objectPool;
     private readonly TextFlyInitializer _textFlyInitializer;
+    
     public PoolFlyText(GameObject prefabFlyText, Transform parentPrefabFlyText,TextFlyInitializer textFlyInitializer)
     {
         _prefabFlyText = prefabFlyText;

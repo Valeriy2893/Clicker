@@ -8,6 +8,7 @@ public class FXManager
     private readonly GameObject _fXClickPrefab;
     private readonly IClickHandler _clickHandler;
     private readonly CompositeDisposable _disposable = new();
+    
     public FXManager(IFXView fxView,IClickHandler clickHandler, ILevelProgression levelProgression,GameObject fXChangeSkinPrefab, GameObject fXClickPrefab)
     {
         _fxView = fxView;

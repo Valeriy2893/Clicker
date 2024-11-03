@@ -13,6 +13,7 @@ public class AnimalManager: IDisposable
     private readonly Transform _parentAnimal;
     private readonly CompositeDisposable _disposable = new();
     private readonly IClickHandler _clickHandler;
+    
     public AnimalManager(ResourcesManager resourcesManager, Transform parentAnimal, ILevelProgression levelProgression,IClickHandler clickHandler)
     {
         _resourcesManager = resourcesManager;
