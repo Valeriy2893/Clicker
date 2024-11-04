@@ -1,7 +1,9 @@
+using System;
 using R3;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
-public class FXManager
+public class FXManager: IDisposable
 {
     private readonly IFXView _fxView;
     private readonly GameObject _fXChangeSkinPrefab;
