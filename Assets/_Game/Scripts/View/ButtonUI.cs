@@ -19,11 +19,11 @@ public class ButtonUI: MonoBehaviour,IButtonView
     }
     public void OnValueChanged(string value)=> _count.text = value;
     public void OnPriceChanged(string price)=> _price.text = price;
-    public void SetInteractable(bool canAfford,TypeButton buttonType,int value)
+    public void SetInteractable(bool canAfford, bool isInteractableChangeFactor)
     { 
         _clickButton.interactable = canAfford;
         
-        if (buttonType != TypeButton.ChanceFactorClick || value < 100) return;
+        if (isInteractableChangeFactor) return;
         _clickButton.interactable = false;
         _count.gameObject.SetActive(false);
         _price.gameObject.SetActive(false);

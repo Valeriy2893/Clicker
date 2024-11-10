@@ -11,6 +11,7 @@ public class ButtonMain: IDisposable
     private readonly Shopping _shopping;
     
     private readonly CompositeDisposable _disposable = new();
+    private const int MaxValueChanceFactorClick = 100;
     public event Func<int,bool> ClickedButtonMain;
     
     public ButtonMain(IButtonInfo buttonInfo, IButtonView buttonUI,ICurrencyProvider currencyProvider)
@@ -26,8 +27,7 @@ public class ButtonMain: IDisposable
             .AddTo(_disposable);
 
         currencyProvider.CurrentBalance.Subscribe(allCoins 
-            => buttonUI.SetInteractable(allCoins >= buttonInfo.Price.CurrentValue,
-            buttonInfo.TypeButton, buttonInfo.Value.CurrentValue))
+            => buttonUI.SetInteractable(allCoins >= buttonInfo.Price.CurrentValue,IsInteractableChangeFactor()))
             .AddTo(_disposable);
     }
 
@@ -44,7 +44,9 @@ public class ButtonMain: IDisposable
         _buttonUI.OnClickButton -= ClickButtonMain;
         _disposable.Dispose();
     }
-}
 
+    private bool IsInteractableChangeFactor() 
+        => TypeButton != TypeButton.ChanceFactorClick || _buttonInfo.Value.CurrentValue < MaxValueChanceFactorClick;
+}
 
 
