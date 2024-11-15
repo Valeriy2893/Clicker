@@ -1,8 +1,12 @@
+using _Game.Scripts.View.Abstracts;
 using TMPro;
 using UnityEngine;
 
-public class CoinsUI: MonoBehaviour,ICoinsView
+namespace _Game.Scripts.View
 {
-    [SerializeField] private TMP_Text _coins;
-    public void SetCoinsText(string levelText) => _coins.text = levelText;
+    public class CoinsUI: MonoBehaviour,ICoinsView
+    {
+        [SerializeField] private TMP_Text _coins;
+        public void SetCoinsText(string levelText) => _coins.text = levelText;
+    }
 }

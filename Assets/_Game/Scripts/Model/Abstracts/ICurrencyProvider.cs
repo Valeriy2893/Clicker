@@ -1,8 +1,11 @@
 using R3;
 
-public interface ICurrencyProvider
+namespace _Game.Scripts.Model.Abstracts
 {
-    public ReadOnlyReactiveProperty<int> CurrentBalance { get; }
-    public bool TryRemoveCoins(int amount);
-    public bool TryAddCoins(int count);
+    public interface ICurrencyProvider
+    {
+        public ReadOnlyReactiveProperty<int> CurrentBalance { get; }
+        public bool TryRemoveCoins(int amount);
+        public bool TryAddCoins(int count);
+    }
 }

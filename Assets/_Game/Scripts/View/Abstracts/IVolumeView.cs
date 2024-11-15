@@ -1,15 +1,18 @@
 using System;
 using UnityEngine;
 
-public interface IVolumeView
+namespace _Game.Scripts.View.Abstracts
 {
-    public void Init(Sprite spriteOff, Sprite spriteOn, AudioClip audioClipClick, AudioClip audioClipSwitch,
-        AudioClip audioClipBackgroundMusic);
+    public interface IVolumeView
+    {
+        public void Init(Sprite spriteOff, Sprite spriteOn, AudioClip audioClipClick, AudioClip audioClipSwitch,
+            AudioClip audioClipBackgroundMusic);
 
-    public void PlayClick();
-    public void PlayChangeSkin();
-    public void SetVolumeIcon(bool isEnable);
-    public event Action OnClickButtonVolume;
+        public void PlayClick();
+        public void PlayChangeSkin();
+        public void SetVolumeIcon(bool isEnable);
+        public event Action OnClickButtonVolume;
 
 
+    }
 }

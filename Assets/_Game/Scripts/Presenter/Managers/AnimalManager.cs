@@ -1,73 +1,53 @@
 using System;
 using System.Collections.Generic;
+using _Game.Scripts.Model.Abstracts;
+using _Game.Scripts.Presenter.Abstracts;
+using _Game.Scripts.Services.AnimalFactory;
 using R3;
-using UnityEngine;
-using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
-public class AnimalManager: IDisposable
+namespace _Game.Scripts.Presenter.Managers
 {
-    private AnimalMain _currentAnimalMain;
-    private readonly List<AnimalMain> _animalsMain= new();
-    private readonly ResourcesManager _resourcesManager;
-    private readonly Transform _parentAnimal;
-    private readonly CompositeDisposable _disposable = new();
-    private readonly IClickHandler _clickHandler;
-    
-    public AnimalManager(ResourcesManager resourcesManager, Transform parentAnimal, ILevelProgression levelProgression,IClickHandler clickHandler)
+    public class AnimalManager : IDisposable
     {
-        _resourcesManager = resourcesManager;
-        _parentAnimal=parentAnimal;
-        _clickHandler= clickHandler;
-        levelProgression.CurrentLevel.Subscribe(x => ChangeAnimal()).AddTo(_disposable);
-    }
-    
-    private AnimalMain GetAnimal()
-    {
-        var count = _resourcesManager.GetCountAllAnimal();
-
-        if (_animalsMain.Count < count)
+        private IAnimalMain _currentAnimalMain;
+        private readonly List<IAnimalMain> _animalsMain = new();
+        private readonly CompositeDisposable _disposable = new();
+        private readonly AnimalFactoryBase _animalFactoryBase;
+        private readonly int _countAnimal;
+        public AnimalManager(int countAnimal, ILevelProgression levelProgression, AnimalFactoryBase animalFactoryBase)
         {
-            var index = 0;
-            
-            if (_currentAnimalMain!=null)
-                index = _currentAnimalMain.Index + 1;
-            
-            return CreateAnimal(_resourcesManager, _parentAnimal, index);
+            _animalFactoryBase = animalFactoryBase;
+            _countAnimal = countAnimal;
+            levelProgression.CurrentLevel.Subscribe(x => ChangeAnimal()).AddTo(_disposable);
+        }
+
+        private IAnimalMain GetAnimal()
+        {
+            if (_animalsMain.Count < _countAnimal)
+            {
+                var index = 0;
+
+                if (_currentAnimalMain != null)
+                    index = _currentAnimalMain.Index + 1;
+
+                var instanceAnimalMain= _animalFactoryBase.CreateAnimal(index);
+                _animalsMain.Add(instanceAnimalMain);
+                return instanceAnimalMain;
+            }
+
+            var minInclusive = 0;
+            var valueRandom = Random.Range(minInclusive, _animalsMain.Count);
+            return _animalsMain[valueRandom];
         }
         
-        var minInclusive = 0;
-        var valueRandom = Random.Range(minInclusive, _animalsMain.Count);
-        return _animalsMain[valueRandom];
-    }
-    private AnimalMain CreateAnimal(ResourcesManager resourcesManager, Transform parentAnimal, int index)
-    {
-        var animalPassport = GetAnimalsPassport(resourcesManager,index);
-        if (animalPassport == null) return null;
+        private void ChangeAnimal()
+        {
+            _currentAnimalMain?.GameObjectAnimal?.SetActive(false);
+            _currentAnimalMain = GetAnimal();
+            _currentAnimalMain?.GameObjectAnimal?.SetActive(true);
+        }
         
-        var animalUI = CreateAnimalUI(animalPassport, parentAnimal);
-        if (animalUI == null) return null;
-        
-        var animalMain = new AnimalMain(animalUI,index,animalPassport.AnimationAnimals,_clickHandler);
-        _animalsMain.Add(animalMain);
-
-        return animalMain;
+        public void Dispose() => _disposable.Dispose();
     }
-
-    private void ChangeAnimal()
-    {
-        _currentAnimalMain?.GameObjectAnimal?.SetActive(false);
-        _currentAnimalMain = GetAnimal();
-        _currentAnimalMain?.GameObjectAnimal?.SetActive(true);
-    }
-    
-    private IAnimalView CreateAnimalUI(AnimalPassport animalPassport, Transform parent)
-    {
-        var anumalInstance = Object.Instantiate(animalPassport.Prefab, parent);
-        return anumalInstance.GetComponent<IAnimalView>();
-    }
-    private AnimalPassport GetAnimalsPassport(ResourcesManager resourcesManager, int index)
-        => resourcesManager.GetAnimalPassport(index);
-
-    public void Dispose()=> _disposable.Dispose();
 }

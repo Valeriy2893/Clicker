@@ -1,4 +1,7 @@
- public interface ICoinsView
+ namespace _Game.Scripts.View.Abstracts
  {
-     public void SetCoinsText(string levelText);
+     public interface ICoinsView
+     {
+         public void SetCoinsText(string levelText);
+     }
  }

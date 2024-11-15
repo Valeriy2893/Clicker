@@ -1,9 +1,12 @@
 using UnityEngine;
 
-public interface IFXView
+namespace _Game.Scripts.View.Abstracts
 {
-    public void Initialize(ParticleSystem fxClick, ParticleSystem fxChangeSkin);
-    public void PlayClickFX(Vector3 position);
-    public void PlayChangeSkinFX();
+    public interface IFXView
+    {
+        public void Initialize(ParticleSystem fxClick, ParticleSystem fxChangeSkin);
+        public void PlayClickFX(Vector3 position);
+        public void PlayChangeSkinFX();
+    }
 }
     

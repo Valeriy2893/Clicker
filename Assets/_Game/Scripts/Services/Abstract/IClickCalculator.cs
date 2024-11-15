@@ -1,7 +1,10 @@
 using System;
 
-public interface IClickCalculator
+namespace _Game.Scripts.Services.Abstract
 {
-    public event Action<int, bool> ClickCalculatedWithFactor;
-    public event Action<int> ClickCalculated;
+    public interface IClickCalculator
+    {
+        public event Action<int, bool> ClickCalculatedWithFactor;
+        public event Action<int> ClickCalculated;
+    }
 }

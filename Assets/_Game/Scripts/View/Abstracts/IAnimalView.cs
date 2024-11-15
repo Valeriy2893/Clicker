@@ -1,7 +1,10 @@
 using UnityEngine;
 
-public interface IAnimalView
+namespace _Game.Scripts.View.Abstracts
 {
-    public void PlayAnimation(string nameCurrentAnimation);
-    public GameObject GameObjectAnimal { get; }
+    public interface IAnimalView
+    {
+        public void PlayAnimation(string nameCurrentAnimation);
+        public GameObject GameObjectAnimal { get; }
+    }
 }

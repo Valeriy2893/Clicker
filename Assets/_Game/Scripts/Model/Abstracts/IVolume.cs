@@ -1,7 +1,10 @@
 using R3;
 
-public interface IVolume
+namespace _Game.Scripts.Model.Abstracts
 {
-    public ReadOnlyReactiveProperty<int> CurrentVolume { get; }
-    public void VolumeControl();
+    public interface IVolume
+    {
+        public ReadOnlyReactiveProperty<int> CurrentVolume { get; }
+        public void VolumeControl();
+    }
 }

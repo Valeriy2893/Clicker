@@ -1,9 +1,12 @@
 using R3;
 
-public interface ILevelProgression
+namespace _Game.Scripts.Model.Abstracts
 {
-    public ReadOnlyReactiveProperty<int> CurrentLevel { get; }
-    public ReadOnlyReactiveProperty<int> Experience { get; }
-    public ReadOnlyReactiveProperty<int> ExperienceRequiredForNextLevel { get; }
-    public bool TryAddExperience(int experience);
+    public interface ILevelProgression
+    {
+        public ReadOnlyReactiveProperty<int> CurrentLevel { get; }
+        public ReadOnlyReactiveProperty<int> Experience { get; }
+        public ReadOnlyReactiveProperty<int> ExperienceRequiredForNextLevel { get; }
+        public bool TryAddExperience(int experience);
+    }
 }

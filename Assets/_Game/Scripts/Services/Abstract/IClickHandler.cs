@@ -1,8 +1,11 @@
 using System;
 using UnityEngine;
 
-public interface IClickHandler
+namespace _Game.Scripts.Services.Abstract
 {
-    public event Action<Vector3> ClickedAnimalWithPosition;
-    public event Action ClickedAnimal;
+    public interface IClickHandler
+    {
+        public event Action<Vector3> ClickedAnimalWithPosition;
+        public event Action ClickedAnimal;
+    }
 }

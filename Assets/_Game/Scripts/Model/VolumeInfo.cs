@@ -1,23 +1,27 @@
+using _Game.Scripts.Model.Abstracts;
 using R3;
 using UnityEngine;
 
-public class VolumeInfo: IVolume
+namespace _Game.Scripts.Model
 {
-    public ReadOnlyReactiveProperty<int> CurrentVolume=> _currentVolume;
-    private readonly ReactiveProperty<int> _currentVolume=new();
+    public class VolumeInfo: IVolume
+    {
+        public ReadOnlyReactiveProperty<int> CurrentVolume=> _currentVolume;
+        private readonly ReactiveProperty<int> _currentVolume=new();
     
-    private const int EnableVolume = 1;
-    private const int DisableVolume = 0;
+        private const int EnableVolume = 1;
+        private const int DisableVolume = 0;
 
-    public VolumeInfo()
-    {
-        SetCurrentVolume();
+        public VolumeInfo()
+        {
+            SetCurrentVolume();
+        }
+        public void VolumeControl()
+        {
+            SetCurrentVolume();
+            _currentVolume.Value = _currentVolume.Value == EnableVolume ? DisableVolume : EnableVolume;
+            AudioListener.volume = _currentVolume.Value;
+        }
+        private void SetCurrentVolume() => _currentVolume.Value = (int)AudioListener.volume;
     }
-    public void VolumeControl()
-    {
-        SetCurrentVolume();
-        _currentVolume.Value = _currentVolume.Value == EnableVolume ? DisableVolume : EnableVolume;
-        AudioListener.volume = _currentVolume.Value;
-    }
-    private void SetCurrentVolume() => _currentVolume.Value = (int)AudioListener.volume;
 }

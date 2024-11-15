@@ -1,21 +1,25 @@
+using _Game.Scripts.View.Abstracts;
 using UnityEngine;
 
-public class FXUI: IFXView
+namespace _Game.Scripts.View
 {
-    private ParticleSystem _fXChangeSkin;
-    private ParticleSystem _fXClick;
-
-    public void Initialize(ParticleSystem fxClick, ParticleSystem fxChangeSkin)
+    public class FXUI: IFXView
     {
-        _fXClick = fxClick;
-        _fXChangeSkin = fxChangeSkin;
-    }
+        private ParticleSystem _fXChangeSkin;
+        private ParticleSystem _fXClick;
 
-    public void PlayClickFX(Vector3 position)
-    {
-        _fXClick.transform.position = position;
-        _fXClick.Play();
-    }
+        public void Initialize(ParticleSystem fxClick, ParticleSystem fxChangeSkin)
+        {
+            _fXClick = fxClick;
+            _fXChangeSkin = fxChangeSkin;
+        }
+
+        public void PlayClickFX(Vector3 position)
+        {
+            _fXClick.transform.position = position;
+            _fXClick.Play();
+        }
     
-    public void PlayChangeSkinFX() => _fXChangeSkin.Play();
+        public void PlayChangeSkinFX() => _fXChangeSkin.Play();
+    }
 }

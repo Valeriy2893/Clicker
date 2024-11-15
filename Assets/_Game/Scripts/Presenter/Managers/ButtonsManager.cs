@@ -1,27 +1,34 @@
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
+using _Game.Scripts.Model.Config;
+using _Game.Scripts.Presenter.Abstracts;
+using _Game.Scripts.Services;
+using _Game.Scripts.Services.ButtonFactory;
 
-public class ButtonsManager
+namespace _Game.Scripts.Presenter.Managers
 {
-    public List<ButtonMain> MainButtons { get;}
-    public AutoClickService AutoClickService{ get;}
+    public class ButtonsManager
+    {
+        public ReadOnlyCollection<IButtonMain> MainButtons { get;}
+        public AutoClickService AutoClickService{ get;}
     
-    public ButtonsManager(SpawnerButtons spawnerButtons, AutoClickService autoClickService)
-    {
-        MainButtons=spawnerButtons.CreateButtons();
-        AutoClickService = autoClickService;
+        public ButtonsManager(ButtonFactoryBase buttonFactory, AutoClickService autoClickService)
+        {
+            MainButtons = buttonFactory.CreateButtons().AsReadOnly();
+            AutoClickService = autoClickService;
         
-        InitializeAutoClick();
+            InitializeAutoClick();
+        }
+        private void InitializeAutoClick()
+        {
+            var buttonMainClickSec = GetTypeButton(TypeButton.ClickSec);
+            var buttonMainFactorClickSec = GetTypeButton(TypeButton.FactorClickSec);
+        
+            if (buttonMainClickSec == null || buttonMainFactorClickSec == null) return;
+        
+            AutoClickService.Initialize(buttonMainClickSec, buttonMainFactorClickSec);
+        }
+        public IButtonMain GetTypeButton(TypeButton typeButton)
+            => MainButtons.FirstOrDefault(buttonMain => buttonMain.TypeButton == typeButton);
     }
-    private void InitializeAutoClick()
-    {
-        var buttonMainClickSec = GetTypeButton(TypeButton.ClickSec);
-        var buttonMainFactorClickSec = GetTypeButton(TypeButton.FactorClickSec);
-        
-        if (buttonMainClickSec == null || buttonMainFactorClickSec == null) return;
-        
-        AutoClickService.Initialize(buttonMainClickSec, buttonMainFactorClickSec);
-    }
-    public ButtonMain GetTypeButton(TypeButton typeButton)
-        => MainButtons.FirstOrDefault(buttonMain => buttonMain.TypeButton == typeButton);
 }
