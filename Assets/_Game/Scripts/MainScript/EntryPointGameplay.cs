@@ -38,8 +38,8 @@ namespace _Game.Scripts.MainScript
         {
             _entryPointBootstrap = FindObjectOfType<EntryPointBootstrap>();
 
-            InitializeCoreSystems();
             InitializeButtonsSystem();
+            InitializeCoreSystems();
             InitializeAnimalSystem();
             InitializeUISystem();
             InitializeGameLogic();
