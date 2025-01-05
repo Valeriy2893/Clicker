@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace _Game.Scripts.Services
 {
-    public class ClickHandler: IClickHandler,IDisposable
+    public class ClickHandler: IClickHandler, IDisposable
     {
         private readonly Camera _cameraMain;
         private readonly CompositeDisposable _disposables = new();
