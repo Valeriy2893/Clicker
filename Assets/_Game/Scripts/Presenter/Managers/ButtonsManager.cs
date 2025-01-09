@@ -1,3 +1,4 @@
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using _Game.Scripts.Model.Config;
@@ -7,11 +8,10 @@ using _Game.Scripts.Services.ButtonFactory;
 
 namespace _Game.Scripts.Presenter.Managers
 {
-    public class ButtonsManager
+    public class ButtonsManager: IDisposable
     {
         public ReadOnlyCollection<IButtonMain> MainButtons { get;}
         public AutoClickService AutoClickService{ get;}
-    
         public ButtonsManager(ButtonFactoryBase buttonFactory, AutoClickService autoClickService)
         {
             MainButtons = buttonFactory.CreateButtons().AsReadOnly();
@@ -30,5 +30,13 @@ namespace _Game.Scripts.Presenter.Managers
         }
         public IButtonMain GetTypeButton(TypeButton typeButton)
             => MainButtons.FirstOrDefault(buttonMain => buttonMain.TypeButton == typeButton);
+
+        public void Dispose()
+        {
+            AutoClickService?.Dispose();
+            
+            foreach (var mainButton in MainButtons)
+                mainButton.Dispose();
+        }
     }
 }

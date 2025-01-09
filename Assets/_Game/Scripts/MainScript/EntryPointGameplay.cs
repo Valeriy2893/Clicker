@@ -61,10 +61,8 @@ namespace _Game.Scripts.MainScript
                 _entryPointBootstrap.CurrencyProvider
             );
 
-            var autoClickService = new AutoClickService();
-            _buttonsManager = new ButtonsManager(_buttonFactory, autoClickService);
-            
-            _disposables.Add(autoClickService);
+            _buttonsManager = new ButtonsManager(_buttonFactory,  new AutoClickService());
+            _disposables.Add(_buttonsManager);
         }
 
         private void InitializeAnimalSystem()

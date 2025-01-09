@@ -11,11 +11,12 @@ namespace _Game.Scripts.View
         public void PlayAnimation(string nameCurrentAnimation)
         {
             if (nameCurrentAnimation == null) return;
+            if (!gameObject.activeSelf) return;
 
             var normalizedTime = 0.0f;
             var layer = -1;
-
-            _animator.Play(nameCurrentAnimation, layer, normalizedTime);
+            
+            _animator?.Play(nameCurrentAnimation, layer, normalizedTime);
         }
     }
 }

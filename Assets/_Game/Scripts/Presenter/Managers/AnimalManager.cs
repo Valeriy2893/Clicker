@@ -43,11 +43,14 @@ namespace _Game.Scripts.Presenter.Managers
         
         private void ChangeAnimal()
         {
+            _currentAnimalMain?.Dispose();
             _currentAnimalMain?.GameObjectAnimal?.SetActive(false);
             _currentAnimalMain = GetAnimal();
+            _currentAnimalMain.ClickTracking();
             _currentAnimalMain?.GameObjectAnimal?.SetActive(true);
         }
         
-        public void Dispose() => _disposable.Dispose();
+        public void Dispose()=>
+            _disposable.Dispose();
     }
 }

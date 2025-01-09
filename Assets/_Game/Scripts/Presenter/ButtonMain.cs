@@ -8,7 +8,7 @@ using R3;
 
 namespace _Game.Scripts.Presenter
 {
-    public class ButtonMain : IButtonMain, IDisposable
+    public class ButtonMain : IButtonMain
     {
         public ReadOnlyReactiveProperty<int> Value => _buttonInfo.Value;
         public TypeButton TypeButton => _buttonInfo.TypeButton;

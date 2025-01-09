@@ -9,7 +9,7 @@ using Random = UnityEngine.Random;
 
 namespace _Game.Scripts.Presenter
 {
-    public class AnimalMain: IDisposable,IAnimalMain
+    public class AnimalMain: IAnimalMain
     {
         public int Index {get;}
         public GameObject GameObjectAnimal =>_animalView.GameObjectAnimal;
@@ -24,11 +24,9 @@ namespace _Game.Scripts.Presenter
             Index=index;
             _animationAnimal=animationAnimal;
             _clickHandler=clickHandler;
-            _clickHandler.ClickedAnimal += PlayAnimation;
         }
-
-        private void PlayAnimation() 
-            => _animalView.PlayAnimation(GetCurrentAnimation());
+        public void ClickTracking() => _clickHandler.ClickedAnimal += PlayAnimation;
+        private void PlayAnimation() => _animalView?.PlayAnimation(GetCurrentAnimation());
 
         private string GetCurrentAnimation()
         {
@@ -38,7 +36,6 @@ namespace _Game.Scripts.Presenter
             var animationIndex= Random.Range(minInclusive, _animationAnimal.Count);
             return _animationAnimal[animationIndex].AnimationClip.name;
         }
-    
-        public void Dispose()=> _clickHandler.ClickedAnimal -= PlayAnimation;
+        public void Dispose() => _clickHandler.ClickedAnimal -= PlayAnimation;
     }
 }
