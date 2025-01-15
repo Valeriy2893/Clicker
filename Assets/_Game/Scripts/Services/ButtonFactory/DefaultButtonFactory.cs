@@ -11,13 +11,13 @@ namespace _Game.Scripts.Services.ButtonFactory
 {
     public class DefaultButtonFactory : ButtonFactoryBase
     {
-        public DefaultButtonFactory(ResourcesManager resourcesManager, Transform parentButtons, ICurrencyProvider currencyProvider) 
-            : base(resourcesManager, parentButtons, currencyProvider) { }
-        
+        public DefaultButtonFactory(ResourcesManager resourcesManager, Transform parentButtons,
+            ICurrencyProvider currencyProvider) : base(resourcesManager, parentButtons, currencyProvider) { }
+
         public override List<IButtonMain> CreateButtons()
         {
             List<IButtonMain> buttonMains = new();
-            
+
             foreach (var buttonPassport in ButtonsPassport)
             {
                 var buttonInfo = CreateButtonInfo(buttonPassport);
@@ -27,17 +27,19 @@ namespace _Game.Scripts.Services.ButtonFactory
                 if (buttonUI == null) continue;
 
                 var buttonMain = new ButtonMain(buttonInfo, buttonUI, CurrencyProvider);
-                
+
                 buttonMains.Add(buttonMain);
             }
 
             return buttonMains;
         }
+
         private IButtonInfo CreateButtonInfo(ButtonPassport buttonPassport)
         {
             return buttonPassport == null
                 ? null
-                : new ButtonInfo(buttonPassport.TypeButton, buttonPassport.DefaultValue, buttonPassport.DefaultPrice, buttonPassport.FactorPrice);
+                : new ButtonInfo(buttonPassport.TypeButton, buttonPassport.DefaultValue, buttonPassport.DefaultPrice,
+                    buttonPassport.FactorPrice);
         }
 
         private IButtonView CreateButtonUI(ButtonPassport buttonPassport)

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace _Game.Scripts.View
 {
-    public class FXUI: IFXView
+    public class FXUI : IFXView
     {
         private ParticleSystem _fXChangeSkin;
         private ParticleSystem _fXClick;
@@ -19,7 +19,7 @@ namespace _Game.Scripts.View
             _fXClick.transform.position = position;
             _fXClick.Play();
         }
-    
+
         public void PlayChangeSkinFX() => _fXChangeSkin.Play();
     }
 }

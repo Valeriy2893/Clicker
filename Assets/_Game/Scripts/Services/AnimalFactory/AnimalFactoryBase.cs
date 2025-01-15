@@ -10,16 +10,17 @@ namespace _Game.Scripts.Services.AnimalFactory
         protected readonly Transform ParentAnimal;
         protected readonly IClickHandler ClickHandler;
         private readonly ResourcesManager _resourcesManager;
-        
-        protected AnimalFactoryBase(ResourcesManager resourcesManager, Transform parentButtons,IClickHandler clickHandler)
+
+        protected AnimalFactoryBase(ResourcesManager resourcesManager, Transform parentButtons,
+            IClickHandler clickHandler)
         {
             _resourcesManager = resourcesManager;
             ParentAnimal = parentButtons;
             ClickHandler = clickHandler;
         }
-        
+
         public abstract IAnimalMain CreateAnimal(int index);
-        
+
         protected AnimalPassport GetAnimalsPassport(int index)
             => _resourcesManager.GetAnimalPassport(index);
     }

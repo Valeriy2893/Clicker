@@ -4,7 +4,7 @@ using R3;
 
 namespace _Game.Scripts.Presenter.Abstracts
 {
-    public interface IButtonMain: IDisposable
+    public interface IButtonMain : IDisposable
     {
         public ReadOnlyReactiveProperty<int> Value { get; }
         public TypeButton TypeButton { get; }

@@ -15,12 +15,16 @@ namespace _Game.Scripts.Presenter.Managers
         private readonly CompositeDisposable _disposable = new();
         private readonly AnimalFactoryBase _animalFactoryBase;
         private readonly int _countAnimal;
+
         public AnimalManager(int countAnimal, ILevelProgression levelProgression, AnimalFactoryBase animalFactoryBase)
         {
             _animalFactoryBase = animalFactoryBase;
             _countAnimal = countAnimal;
             levelProgression.CurrentLevel.Subscribe(x => ChangeAnimal()).AddTo(_disposable);
         }
+
+        public void Dispose() =>
+            _disposable.Dispose();
 
         private IAnimalMain GetAnimal()
         {
@@ -31,7 +35,7 @@ namespace _Game.Scripts.Presenter.Managers
                 if (_currentAnimalMain != null)
                     index = _currentAnimalMain.Index + 1;
 
-                var instanceAnimalMain= _animalFactoryBase.CreateAnimal(index);
+                var instanceAnimalMain = _animalFactoryBase.CreateAnimal(index);
                 _animalsMain.Add(instanceAnimalMain);
                 return instanceAnimalMain;
             }
@@ -40,7 +44,7 @@ namespace _Game.Scripts.Presenter.Managers
             var valueRandom = Random.Range(minInclusive, _animalsMain.Count);
             return _animalsMain[valueRandom];
         }
-        
+
         private void ChangeAnimal()
         {
             _currentAnimalMain?.Dispose();
@@ -49,8 +53,5 @@ namespace _Game.Scripts.Presenter.Managers
             _currentAnimalMain.ClickTracking();
             _currentAnimalMain?.GameObjectAnimal?.SetActive(true);
         }
-        
-        public void Dispose()=>
-            _disposable.Dispose();
     }
 }

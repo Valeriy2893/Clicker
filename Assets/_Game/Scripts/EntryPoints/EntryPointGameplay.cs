@@ -11,7 +11,7 @@ using _Game.Scripts.Services.ButtonFactory;
 using _Game.Scripts.View;
 using UnityEngine;
 
-namespace _Game.Scripts.MainScript
+namespace _Game.Scripts.EntryPoints
 {
     public class EntryPointGameplay : MonoBehaviour
     {
@@ -24,15 +24,15 @@ namespace _Game.Scripts.MainScript
         [SerializeField] private LevelUI _levelUI;
         [SerializeField] private VolumeUI _volumeUI;
 
-        private EntryPointBootstrap _entryPointBootstrap;
         private readonly List<IDisposable> _disposables = new();
-
+        
         private DefaultAnimalFactory _animalFactory;
         private DefaultButtonFactory _buttonFactory;
         private PoolFlyText _poolFlyText;
         private ButtonsManager _buttonsManager;
         private IClickHandler _clickHandler;
         private IClickCalculator _clickCalculator;
+        private EntryPointBootstrap _entryPointBootstrap;
 
         private void Awake()
         {
@@ -49,7 +49,7 @@ namespace _Game.Scripts.MainScript
         {
             _clickHandler = new ClickHandler(_cameraMain);
             _clickCalculator = new ClickCalculator(_clickHandler, _buttonsManager);
-            
+
             _disposables.Add((IDisposable)_clickHandler);
         }
 
@@ -61,7 +61,7 @@ namespace _Game.Scripts.MainScript
                 _entryPointBootstrap.CurrencyProvider
             );
 
-            _buttonsManager = new ButtonsManager(_buttonFactory,  new AutoClickService());
+            _buttonsManager = new ButtonsManager(_buttonFactory, new AutoClickService());
             _disposables.Add(_buttonsManager);
         }
 
@@ -147,7 +147,7 @@ namespace _Game.Scripts.MainScript
                 _levelUI,
                 _clickCalculator
             );
-            
+
             _disposables.Add(shopping);
             _disposables.Add(levelManager);
         }
@@ -155,9 +155,7 @@ namespace _Game.Scripts.MainScript
         private void OnDestroy()
         {
             foreach (var disposable in _disposables)
-            {
                 disposable.Dispose();
-            }
 
             _disposables.Clear();
         }

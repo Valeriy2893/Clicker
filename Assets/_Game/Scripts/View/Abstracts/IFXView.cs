@@ -9,4 +9,3 @@ namespace _Game.Scripts.View.Abstracts
         public void PlayChangeSkinFX();
     }
 }
-    

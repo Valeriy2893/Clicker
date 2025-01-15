@@ -5,7 +5,7 @@ namespace _Game.Scripts.View.Abstracts
 {
     public interface IButtonView
     {
-        public event Action OnClickButton;
+        public event Action ClickedButton;
         public void Init(Sprite icon, string nameButton);
         public void OnValueChanged(string value);
         public void OnPriceChanged(string price);

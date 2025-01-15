@@ -9,11 +9,16 @@ namespace _Game.Scripts.View
     public class TextFlyUI : MonoBehaviour, ITextFlyView
     {
         [field: SerializeField] public TMP_Text TextFly { get; private set; }
-        public GameObject GameObject=> gameObject;
+        public GameObject GameObject => gameObject;
+        
         public event Action<ITextFlyView> AnimationEnded;
+        
         public void SetColor(Color color) => TextFly.color = color;
+        
         public void SetText(string text) => TextFly.text = text;
+        
         public void SetFontSize(int size) => TextFly.fontSize = size;
+
         public void StartAnimation()
         {
             var offset = 150;

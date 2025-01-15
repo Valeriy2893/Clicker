@@ -8,7 +8,8 @@ namespace _Game.Scripts.Services
     public class AutoClickService : IDisposable
     {
         private readonly CompositeDisposable _disposable = new();
-        public event Action<int, int> OnAddCoinsAuto;
+
+        public event Action<int, int> AddedCoinsAuto;
 
         public void Initialize(IButtonMain clickSecButton, IButtonMain factorClickSecButton)
         {
@@ -20,17 +21,14 @@ namespace _Game.Scripts.Services
                 .AddTo(_disposable);
         }
 
+        public void Dispose() => _disposable.Dispose();
+
         private void StartAutoClick(IButtonMain clickSecButton, IButtonMain factorClickSecButton)
         {
             Observable.Interval(TimeSpan.FromSeconds(1))
                 .Subscribe(_ =>
-                    OnAddCoinsAuto?.Invoke(clickSecButton.Value.CurrentValue, factorClickSecButton.Value.CurrentValue))
+                    AddedCoinsAuto?.Invoke(clickSecButton.Value.CurrentValue, factorClickSecButton.Value.CurrentValue))
                 .AddTo(_disposable);
         }
-
-        public void Dispose() => _disposable.Dispose();
     }
 }
-
-
-        

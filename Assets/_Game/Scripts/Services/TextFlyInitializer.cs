@@ -7,8 +7,8 @@ namespace _Game.Scripts.Services
     {
         private const int FontSizeCrit = 100;
         private const int FontSizeClick = 45;
-        private readonly Color _colorCrit=Color.red;
-        private readonly Color _colorClick=Color.black;
+        private readonly Color _colorCrit = Color.red;
+        private readonly Color _colorClick = Color.black;
 
         public void Initialize(ITextFlyView textFlyUI, Vector3 screenPoint, bool isFactor, int clickValue)
         {

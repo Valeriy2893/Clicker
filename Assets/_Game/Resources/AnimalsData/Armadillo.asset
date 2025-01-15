@@ -14,14 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Prefab>k__BackingField: {fileID: 2146774954413254568, guid: 00edb8a7ad419084cbf63dab4e6d8e8c, type: 3}
   <AnimationAnimals>k__BackingField:
-  - <NameAnimanion>k__BackingField: 0
-    <AnimationClip>k__BackingField: {fileID: 7400016, guid: bf4017df3a5f2474783f62d6a970776e, type: 3}
-  - <NameAnimanion>k__BackingField: 1
-    <AnimationClip>k__BackingField: {fileID: 7400006, guid: bf4017df3a5f2474783f62d6a970776e, type: 3}
-  - <NameAnimanion>k__BackingField: 2
-    <AnimationClip>k__BackingField: {fileID: 7400012, guid: bf4017df3a5f2474783f62d6a970776e, type: 3}
-  - <NameAnimanion>k__BackingField: 3
-    <AnimationClip>k__BackingField: {fileID: 7400022, guid: bf4017df3a5f2474783f62d6a970776e, type: 3}
-  - <NameAnimanion>k__BackingField: 4
-    <AnimationClip>k__BackingField: {fileID: 7400026, guid: bf4017df3a5f2474783f62d6a970776e, type: 3}
-  <NameAnimal>k__BackingField: 0
+  - {fileID: 7400006, guid: bf4017df3a5f2474783f62d6a970776e, type: 3}
+  - {fileID: 7400012, guid: bf4017df3a5f2474783f62d6a970776e, type: 3}
+  - {fileID: 7400016, guid: bf4017df3a5f2474783f62d6a970776e, type: 3}
+  - {fileID: 7400022, guid: bf4017df3a5f2474783f62d6a970776e, type: 3}
+  - {fileID: 7400026, guid: bf4017df3a5f2474783f62d6a970776e, type: 3}

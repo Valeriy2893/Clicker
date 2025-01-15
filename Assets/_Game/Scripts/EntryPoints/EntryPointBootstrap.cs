@@ -5,7 +5,7 @@ using _Game.Scripts.Services;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace _Game.Scripts.MainScript
+namespace _Game.Scripts.EntryPoints
 {
     public class EntryPointBootstrap : MonoBehaviour
     {
@@ -27,4 +27,3 @@ namespace _Game.Scripts.MainScript
         }
     }
 }
-

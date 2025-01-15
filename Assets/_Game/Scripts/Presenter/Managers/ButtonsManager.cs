@@ -8,35 +8,38 @@ using _Game.Scripts.Services.ButtonFactory;
 
 namespace _Game.Scripts.Presenter.Managers
 {
-    public class ButtonsManager: IDisposable
+    public class ButtonsManager : IDisposable
     {
-        public ReadOnlyCollection<IButtonMain> MainButtons { get;}
-        public AutoClickService AutoClickService{ get;}
+        public ReadOnlyCollection<IButtonMain> MainButtons { get; }
+        public AutoClickService AutoClickService { get; }
+
         public ButtonsManager(ButtonFactoryBase buttonFactory, AutoClickService autoClickService)
         {
             MainButtons = buttonFactory.CreateButtons().AsReadOnly();
             AutoClickService = autoClickService;
-        
+
             InitializeAutoClick();
         }
-        private void InitializeAutoClick()
-        {
-            var buttonMainClickSec = GetTypeButton(TypeButton.ClickSec);
-            var buttonMainFactorClickSec = GetTypeButton(TypeButton.FactorClickSec);
-        
-            if (buttonMainClickSec == null || buttonMainFactorClickSec == null) return;
-        
-            AutoClickService.Initialize(buttonMainClickSec, buttonMainFactorClickSec);
-        }
+
         public IButtonMain GetTypeButton(TypeButton typeButton)
             => MainButtons.FirstOrDefault(buttonMain => buttonMain.TypeButton == typeButton);
 
         public void Dispose()
         {
             AutoClickService?.Dispose();
-            
+
             foreach (var mainButton in MainButtons)
                 mainButton.Dispose();
+        }
+
+        private void InitializeAutoClick()
+        {
+            var buttonMainClickSec = GetTypeButton(TypeButton.ClickSec);
+            var buttonMainFactorClickSec = GetTypeButton(TypeButton.FactorClickSec);
+
+            if (buttonMainClickSec == null || buttonMainFactorClickSec == null) return;
+
+            AutoClickService.Initialize(buttonMainClickSec, buttonMainFactorClickSec);
         }
     }
 }

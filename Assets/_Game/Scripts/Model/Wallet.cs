@@ -5,8 +5,9 @@ namespace _Game.Scripts.Model
 {
     public class Wallet : ICurrencyProvider
     {
-        public ReadOnlyReactiveProperty<int> CurrentBalance => _allCoins;
         private readonly ReactiveProperty<int> _allCoins = new();
+        
+        public ReadOnlyReactiveProperty<int> CurrentBalance => _allCoins;
 
         public bool TryRemoveCoins(int count)
         {

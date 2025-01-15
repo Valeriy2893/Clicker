@@ -7,10 +7,10 @@ using UnityEngine;
 
 namespace _Game.Scripts.Services.AnimalFactory
 {
-    public class DefaultAnimalFactory: AnimalFactoryBase
+    public class DefaultAnimalFactory : AnimalFactoryBase
     {
-        public DefaultAnimalFactory(ResourcesManager resourcesManager, Transform parentButtons, IClickHandler clickHandler) 
-            : base(resourcesManager, parentButtons, clickHandler){ }
+        public DefaultAnimalFactory(ResourcesManager resourcesManager, Transform parentButtons,
+            IClickHandler clickHandler) : base(resourcesManager, parentButtons, clickHandler) { }
 
         public override IAnimalMain CreateAnimal(int index)
         {
@@ -21,9 +21,10 @@ namespace _Game.Scripts.Services.AnimalFactory
             if (animalUI == null) return null;
 
             var animalMain = new AnimalMain(animalUI, index, animalPassport.AnimationAnimals, ClickHandler);
-            
+
             return animalMain;
         }
+
         private IAnimalView CreateAnimalUI(AnimalPassport animalPassport, Transform parent)
         {
             var anumalInstance = Object.Instantiate(animalPassport.Prefab, parent);

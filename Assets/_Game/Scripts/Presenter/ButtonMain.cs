@@ -10,15 +10,16 @@ namespace _Game.Scripts.Presenter
 {
     public class ButtonMain : IButtonMain
     {
-        public ReadOnlyReactiveProperty<int> Value => _buttonInfo.Value;
-        public TypeButton TypeButton => _buttonInfo.TypeButton;
+        private const int MaxValueChanceFactorClick = 100;
 
         private readonly IButtonInfo _buttonInfo;
         private readonly IButtonView _buttonUI;
         private readonly Shopping _shopping;
-
         private readonly CompositeDisposable _disposable = new();
-        private const int MaxValueChanceFactorClick = 100;
+
+        public ReadOnlyReactiveProperty<int> Value => _buttonInfo.Value;
+        public TypeButton TypeButton => _buttonInfo.TypeButton;
+
         public event Func<int, bool> ClickedButtonMain;
 
         public ButtonMain(IButtonInfo buttonInfo, IButtonView buttonUI, ICurrencyProvider currencyProvider)
@@ -26,7 +27,7 @@ namespace _Game.Scripts.Presenter
             _buttonInfo = buttonInfo;
             _buttonUI = buttonUI;
 
-            _buttonUI.OnClickButton += ClickButtonMain;
+            _buttonUI.ClickedButton += ClickButtonMain;
 
             buttonInfo.Value.Subscribe(value => buttonUI.OnValueChanged(FormatLargeNumber.ModificationInt(value)))
                 .AddTo(_disposable);
@@ -39,23 +40,21 @@ namespace _Game.Scripts.Presenter
                 .AddTo(_disposable);
         }
 
-        private void ClickButtonMain()
-        {
-            if (!_buttonInfo.CanAddValue() || ClickedButtonMain == null) return;
-
-            if (ClickedButtonMain.Invoke(_buttonInfo.Price.CurrentValue))
-                _buttonInfo.AddValue();
-        }
-
         public void Dispose()
         {
-            _buttonUI.OnClickButton -= ClickButtonMain;
+            _buttonUI.ClickedButton -= ClickButtonMain;
             _disposable.Dispose();
+        }
+
+        private void ClickButtonMain()
+        {
+            if (!_buttonInfo.CanIncreaseValue() || ClickedButtonMain == null) return;
+
+            if (ClickedButtonMain.Invoke(_buttonInfo.Price.CurrentValue))
+                _buttonInfo.IncreaseValue();
         }
 
         private bool IsInteractableChangeFactor()
             => TypeButton != TypeButton.ChanceFactorClick || _buttonInfo.Value.CurrentValue < MaxValueChanceFactorClick;
     }
 }
-
-
