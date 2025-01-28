@@ -1,5 +1,6 @@
 Используется:
-0) ООП, SOLID, DRY, KISS, YAGNI
+
+0) ООП, SOLID, DRY, KISS, YAGNI;
 1) Mvp (passive view, для разделение на слои);
 2) Entry Point (для контроля порядка инициализации объектов);
 3) Factory (для создания кнопок и животных);
