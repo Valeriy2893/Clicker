@@ -39,14 +39,17 @@ namespace _Game.Scripts.Services
         private ITextFlyView CreateFlyTextInstance()
         {
             var instance = Object.Instantiate(_prefabFlyText, _parentPrefabFlyText);
-
             var textFlyUI = instance.GetComponent<ITextFlyView>();
-            textFlyUI.AnimationEnded += flyText => _objectPool.Release(flyText);
+            textFlyUI.AnimationEnded += OnFlyTextAnimationEnded;
             return textFlyUI;
         }
 
+        private void OnFlyTextAnimationEnded(ITextFlyView flyText) => _objectPool.Release(flyText);
+
         private void OnGetFromPool(ITextFlyView textFlyUI) => textFlyUI.GameObject.SetActive(true);
+        
         private void OnReturnToPool(ITextFlyView textFlyUI) => textFlyUI.GameObject.SetActive(false);
+        
         private void OnDestroyInstance(ITextFlyView textFlyUI) => Object.Destroy(textFlyUI.GameObject);
     }
 }
